@@ -68,20 +68,43 @@
 //Type Aliases & Union Types
 //task 1
 
-type OrderStatus = "pending" | "shipped" | "delivered";
-interface Order {
-  id: number;
-  customer: string;
-  status: OrderStatus;
-}
-const orders: Order[] = [
-  { id: 1, customer: "John Doe", status: "pending" },
-  { id: 2, customer: "Suzan Harris", status: "shipped" },
-  { id: 3, customer: "Jay Rollinson", status: "delivered" },
-];
+// type OrderStatus = "pending" | "shipped" | "delivered";
+// interface Order {
+//   id: number;
+//   customer: string;
+//   status: OrderStatus;
+// }
+// const orders: Order[] = [
+//   { id: 1, customer: "John Doe", status: "pending" },
+//   { id: 2, customer: "Suzan Harris", status: "shipped" },
+//   { id: 3, customer: "Jay Rollinson", status: "delivered" },
+// ];
 
-function getOrdersByStatus(orders: Order[], status: OrderStatus): Order[] {
-  return orders.filter((order) => order.status === status);
-}
+// function getOrdersByStatus(orders: Order[], status: OrderStatus): Order[] {
+//   return orders.filter((order) => order.status === status);
+// }
 
-console.log(getOrdersByStatus(orders, "shipped"));
+// console.log(getOrdersByStatus(orders, "shipped"));
+
+//Generics
+//task 1
+// 1. Write a generic function "getLast" that returns
+//    the LAST item of any array
+// function getLast<T>(arr: T[]): T | undefined {
+//   return arr[arr.length - 1];
+// }
+
+// // Test with different types:
+// console.log(getLast([1, 2, 3])); // → 3
+// console.log(getLast(["a", "b", "c"])); // → "c"
+// console.log(getLast([true, false])); // → false
+
+// 2. Write a generic function "wrapInArray" that takes
+//    a single item and returns it wrapped in an array
+
+// function wrapInArray<T>(item: T): T[] {
+//   return [item];
+// }
+
+// console.log(wrapInArray(5)); // → [5]
+// console.log(wrapInArray("hello")); // → ["hello"]
