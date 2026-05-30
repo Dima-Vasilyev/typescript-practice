@@ -105,6 +105,41 @@
 // function wrapInArray<T>(item: T): T[] {
 //   return [item];
 // }
-
 // console.log(wrapInArray(5)); // → [5]
 // console.log(wrapInArray("hello")); // → ["hello"]
+
+//Typing API Responses
+//task 1
+
+// 1. Interface for company
+interface Company {
+  name: string;
+}
+// 2. Interface for ApiUser (include company)
+interface ApiUser {
+  id: number;
+  name: string;
+  email: string;
+  phone: number;
+  company: Company;
+}
+
+// 3. Typed async function
+async function fetchUser(id: number): Promise<ApiUser> {
+  // fetch, convert to json, return
+  try {
+    const response = await fetch(
+      `https://jsonplaceholder.typicode.com/users/${id}`,
+    );
+    const data: ApiUser = await response.json();
+    return data;
+  } catch (error) {
+    console.log("Something went wrong", error);
+    throw error;
+  }
+}
+
+// 4. Test it
+fetchUser(1).then((user) =>
+  console.log(`Name: ${user.name}, Company: ${user.company.name}`),
+);
